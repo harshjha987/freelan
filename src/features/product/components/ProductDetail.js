@@ -131,13 +131,13 @@ export default function ProductDetail() {
                 />
               </div>
             </div>
-            <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+            {/* <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
               <img
                 src={product.images[3]}
                 alt={product.title}
                 className="h-full w-full object-cover object-center"
               />
-            </div>
+            </div> */}
           </div>
 
           {/* Product info */}
@@ -182,7 +182,7 @@ export default function ProductDetail() {
 
               <form className="mt-10">
                 {/* Colors */}
-                {product.colors && product.colors.length > 0 && (
+                {/* {product.colors && product.colors.length > 0 && (
                   <div>
                     <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
@@ -226,7 +226,7 @@ export default function ProductDetail() {
                 )}
 
                 {/* Sizes */}
-                {product.sizes && product.sizes.length > 0 && (
+                {/* /* {product.sizes && product.sizes.length > 0 && (
                   <div className="mt-10">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-medium text-gray-900">
@@ -307,8 +307,8 @@ export default function ProductDetail() {
                         ))}
                       </div>
                     </RadioGroup>
-                  </div>
-                )}
+                  </div> */}
+                
 
                 <button
                   onClick={handleCart}
@@ -332,7 +332,7 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              {product.highlights && (
+              {/* {product.highlights && (
                 <div className="mt-10">
                   <h3 className="text-sm font-medium text-gray-900">
                     Highlights
@@ -351,7 +351,7 @@ export default function ProductDetail() {
                     </ul>
                   </div>
                 </div>
-              )}
+              )} */}
 
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>

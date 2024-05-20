@@ -18,7 +18,7 @@ export default function UserOrders() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div >
       {orders && orders.map((order) => (
         <div key={order.id}>
           <div>

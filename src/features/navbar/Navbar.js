@@ -13,8 +13,8 @@ import { selectUserInfo } from '../user/userSlice';
 
 
 const navigation = [
-  { name: 'Products', link: '/', user: true },
-  { name: 'Products', link: '/admin', admin: true },
+  { name: 'CarrerCraft', link: '/', user: true },
+  { name: 'CarrerCraft', link: '/admin', admin: true },
   { name: 'Orders', link: '/admin/orders', admin: true },
 
 ];
@@ -45,7 +45,7 @@ function NavBar({ children }) {
                       <Link to="/">
                         <img
                           className="h-8 w-8"
-                          src="/ecommerce.png"
+                          src="/freelan.png"
                           alt="Your Company"
                         />
                       </Link>
@@ -61,7 +61,7 @@ function NavBar({ children }) {
                                 item.current
                                   ? 'bg-gray-900 text-white'
                                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'rounded-md px-3 py-2 text-sm font-medium'
+                                'rounded-md px-3 py-2 text-2xl font-bold font-serif'
                               )}
                               aria-current={item.current ? 'page' : undefined}
                             >
@@ -228,16 +228,38 @@ function NavBar({ children }) {
 
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              E-Commerce
-            </h1>
+          <h1 className="text-5xl font-bold mb-4">Welcome to Career Craft</h1>
+        <p className="text-xl mb-6">Your Pathway to a Successful Career in Tech</p>
           </div>
-        </header>
+        </header> 
+        <section className="text-center p-10">
+        <h2 className="text-3xl font-bold mb-6">Why Choose Career Craft?</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2">Expert Instructors</h3>
+            <p>Learn from industry leaders and experienced professionals.</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2">Flexible Learning</h3>
+            <p>Access our courses anytime, anywhere, and learn at your own pace.</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2">Comprehensive Curriculum</h3>
+            <p>Our courses cover everything from the basics to advanced topics.</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2">Career Support</h3>
+            <p>Get personalized career advice and job placement assistance.</p>
+          </div>
+        </div>
+      </section>
+
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             {children}
           </div>
         </main>
+       
       </div>}
     </>
   );

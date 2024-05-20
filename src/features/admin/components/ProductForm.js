@@ -76,25 +76,25 @@ function ProductForm() {
       setValue('description', selectedProduct.description);
       setValue('price', selectedProduct.price);
       setValue('discountPercentage', selectedProduct.discountPercentage);
-      setValue('thumbnail', selectedProduct.thumbnail);
-      setValue('stock', selectedProduct.stock);
+      // setValue('thumbnail', selectedProduct.thumbnail);
+      // setValue('stock', selectedProduct.stock);
       setValue('image1', selectedProduct.images[0]);
       setValue('image2', selectedProduct.images[1]);
-      setValue('image3', selectedProduct.images[2]);
-      setValue('brand', selectedProduct.brand);
-      setValue('category', selectedProduct.category);
+      // setValue('image3', selectedProduct.images[2]);
+      // setValue('brand', selectedProduct.brand);
+      // setValue('category', selectedProduct.category);
       setValue('highlight1', selectedProduct.highlights[0]);
-      setValue('highlight2', selectedProduct.highlights[1]);
-      setValue('highlight3', selectedProduct.highlights[2]);
-      setValue('highlight4', selectedProduct.highlights[3]);
-      setValue(
-        'sizes',
-        selectedProduct.sizes.map((size) => size.id)
-      );
-      setValue(
-        'colors',
-        selectedProduct.colors.map((color) => color.id)
-      );
+      // setValue('highlight2', selectedProduct.highlights[1]);
+      // setValue('highlight3', selectedProduct.highlights[2]);
+      // setValue('highlight4', selectedProduct.highlights[3]);
+      // setValue(
+      //   'sizes',
+      //   selectedProduct.sizes.map((size) => size.id)
+      // );
+      // setValue(
+      //   'colors',
+      //   selectedProduct.colors.map((color) => color.id)
+      // );
     }
   }, [selectedProduct, params.id, setValue]);
 
@@ -114,26 +114,26 @@ function ProductForm() {
           product.images = [
             product.image1,
             product.image2,
-            product.image3,
-            product.thumbnail,
+            // product.image3,
+            // product.thumbnail,
           ];
           product.highlights = [
             product.highlight1,
-            product.highlight2,
-            product.highlight3,
-            product.highlight4,
+            // product.highlight2,
+            // product.highlight3,
+            // product.highlight4,
           ];
           product.rating = 0;
-          if (product.colors) {
-            product.colors = product.colors.map((color) =>
-              colors.find((clr) => clr.id === color)
-            );
-          }
-          if (product.sizes) {
-            product.sizes = product.sizes.map((size) =>
-              sizes.find((sz) => sz.id === size)
-            );
-          }
+          // if (product.colors) {
+          //   product.colors = product.colors.map((color) =>
+          //     colors.find((clr) => clr.id === color)
+          //   );
+          // }
+          // if (product.sizes) {
+          //   product.sizes = product.sizes.map((size) =>
+          //     sizes.find((sz) => sz.id === size)
+          //   );
+          // }
 
           delete product['image1'];
           delete product['image2'];
@@ -213,7 +213,7 @@ function ProductForm() {
                 </p>
               </div>
 
-              <div className="col-span-full">
+              {/* <div className="col-span-full">
                 <label
                   htmlFor="brand"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -234,9 +234,9 @@ function ProductForm() {
                     ))}
                   </select>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="col-span-full">
+              {/* <div className="col-span-full">
                 <label
                   htmlFor="colors"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -256,9 +256,9 @@ function ProductForm() {
                     </>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              <div className="col-span-full">
+              {/* <div className="col-span-full">
                 <label
                   htmlFor="sizes"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -278,9 +278,9 @@ function ProductForm() {
                     </>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              <div className="col-span-full">
+              {/* <div className="col-span-full">
                 <label
                   htmlFor="category"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -301,7 +301,7 @@ function ProductForm() {
                     ))}
                   </select>
                 </div>
-              </div>
+              </div> */}
 
               <div className="sm:col-span-2">
                 <label
@@ -371,7 +371,7 @@ function ProductForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-6">
+              {/* <div className="sm:col-span-6">
                 <label
                   htmlFor="thumbnail"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -390,7 +390,7 @@ function ProductForm() {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="sm:col-span-6">
                 <label
@@ -434,7 +434,7 @@ function ProductForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-6">
+              {/* <div className="sm:col-span-6">
                 <label
                   htmlFor="image2"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -453,7 +453,7 @@ function ProductForm() {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="sm:col-span-6">
                 <label
@@ -473,7 +473,7 @@ function ProductForm() {
                   </div>
                 </div>
               </div>
-              <div className="sm:col-span-6">
+              {/* <div className="sm:col-span-6">
                 <label
                   htmlFor="highlight2"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -490,8 +490,8 @@ function ProductForm() {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="sm:col-span-6">
+              </div> */}
+              {/* <div className="sm:col-span-6">
                 <label
                   htmlFor="highlight3"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -508,8 +508,8 @@ function ProductForm() {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="sm:col-span-6">
+              </div> */}
+              {/* <div className="sm:col-span-6">
                 <label
                   htmlFor="highlight4"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -526,7 +526,7 @@ function ProductForm() {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 

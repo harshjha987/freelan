@@ -56,7 +56,7 @@ export default function UserProfile() {
             Name: {userInfo.name ? userInfo.name : 'New User'}
           </h1>
           <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-            email address : {userInfo.email}
+            Email address : {userInfo.email}
           </h3>
           {userInfo.role === 'admin' && (
             <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">

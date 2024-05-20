@@ -132,13 +132,13 @@ export default function AdminProductDetail() {
                 />
               </div>
             </div>
-            <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+            {/* <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
               <img
                 src={product.images[3]}
                 alt={product.title}
                 className="h-full w-full object-cover object-center"
               />
-            </div>
+            </div> */}
           </div>
 
           {/* Product info */}
@@ -183,7 +183,7 @@ export default function AdminProductDetail() {
 
               <form className="mt-10">
                 {/* Colors */}
-                {product.colors && product.colors.length > 0 && (
+                {/* {product.colors && product.colors.length > 0 && (
                   <div>
                     <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
@@ -309,7 +309,7 @@ export default function AdminProductDetail() {
                       </div>
                     </RadioGroup>
                   </div>
-                )}
+                )} */
 
                 <button
                   onClick={handleCart}
@@ -339,7 +339,7 @@ export default function AdminProductDetail() {
                     Highlights
                   </h3>
 
-                  <div className="mt-4">
+                  {/* <div className="mt-4">
                     <ul
                       role="list"
                       className="list-disc space-y-2 pl-4 text-sm"
@@ -350,7 +350,7 @@ export default function AdminProductDetail() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               )}
 
