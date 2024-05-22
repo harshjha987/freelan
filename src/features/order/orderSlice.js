@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createOrder, fetchAllOrders,updateOrder } from './orderAPI';
+import { createOrder, createOrders, createOrdersverify, fetchAllOrders,updateOrder } from './orderAPI';
 
 const initialState = {
   orders: [],
@@ -8,6 +8,26 @@ const initialState = {
   totalOrders: 0
 };
 //we may need more info of current order
+
+export const createOrdersAsync = createAsyncThunk(
+  'order/createOrder',
+  async (order) => {
+    const response = await createOrders(order);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+export const datas =async (order) => {
+  const response = await createOrders(order);
+  // The value we return becomes the `fulfilled` action payload
+  return response.data;
+}
+export const dataverify =async (order) => {
+  const response = await createOrdersverify(order);
+  // The value we return becomes the `fulfilled` action payload
+  return response.data;
+}
 
 export const createOrderAsync = createAsyncThunk(
   'order/createOrder',

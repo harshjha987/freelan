@@ -227,7 +227,7 @@ export default function AdminProductDetail() {
                 )}
 
                 {/* Sizes */}
-                {product.sizes && product.sizes.length > 0 && (
+                {/* {product.sizes && product.sizes.length > 0 && (
                   <div className="mt-10">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-medium text-gray-900">
@@ -308,8 +308,8 @@ export default function AdminProductDetail() {
                         ))}
                       </div>
                     </RadioGroup>
-                  </div>
-                )} */
+                  </div> */}
+                ) */
 
                 <button
                   onClick={handleCart}

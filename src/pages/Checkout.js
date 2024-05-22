@@ -11,11 +11,14 @@ import { updateUserAsync } from '../features/user/userSlice';
 import { useState } from 'react';
 import {
   createOrderAsync,
+  createOrdersAsync,
+  datas,
   selectCurrentOrder,
   selectStatus,
 } from '../features/order/orderSlice';
 import { selectUserInfo } from '../features/user/userSlice';
 import { Grid } from 'react-loader-spinner';
+import axios from 'axios'
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -25,6 +28,9 @@ function Checkout() {
     reset,
     formState: { errors },
   } = useForm();
+
+  const [Status, setStatus] = useState(false)
+  const [OrderId, setOrderId] = useState("")
 
   const user = useSelector(selectUserInfo);
   const items = useSelector(selectItems);
@@ -58,21 +64,73 @@ function Checkout() {
     setPaymentMethod(e.target.value);
   };
 
-  const handleOrder = (e) => {
+  const handleOrder = async(e) => {
     if (selectedAddress && paymentMethod) {
-      const order = {
-        items,
-        totalAmount,
-        totalItems,
-        user: user.id,
-        paymentMethod,
-        selectedAddress,
-        status: 'pending', // other status can be delivered, received.
-      };
-      dispatch(createOrderAsync(order));
-      // need to redirect from here to a new page of order success.
+
+      const response = await datas({
+        // items,
+        amount:totalAmount,
+        currency : "INR"})
+      console.log(response)
+
+      var options = {
+        "key": "rzp_test_Zs3ZVOYDvRkiJq", // Enter the Key ID generated from the Dashboard
+        totalAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp", //your business name
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": response.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": async function (response){
+            const body = {
+              ...response,
+
+            }
+            const res = await axios.post('http://localhost:3000/order-verify',
+              body)
+            console.log(res)
+              if(res.data.msg == "success"){
+                setStatus(true)
+                setOrderId(res.data.orderId)
+              }
+            
+        },
+        "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+            "name": "Gaurav Kumar", //your customer's name
+            "email": "gaurav.kumar@example.com", 
+            "contact": "9000090000"  //Provide the customer's phone number for better conversion rates 
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new window.Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+    });
+    rzp1.open();
+    e.preventDefault();
+    const order = {
+      items,
+      totalAmount,
+      totalItems,
+      user: user.id,
+      paymentMethod,
+      selectedAddress,
+      status: 'success', // other status can be delivered, received.
+    };
+    dispatch(createOrderAsync(order));
+    // need to redirect from here to a new page of order success.
     } else {
-      
       alert('Enter Address and Payment method');
     }
   };
@@ -80,14 +138,11 @@ function Checkout() {
   return (
     <>
       {!items.length && <Navigate to="/" replace={true}></Navigate>}
-      {currentOrder && currentOrder.paymentMethod === 'cash' && (
+      {currentOrder && Status && (
         <Navigate
           to={`/order-success/${currentOrder.id}`}
           replace={true}
         ></Navigate>
-      )}
-      {currentOrder && currentOrder.paymentMethod === 'card' && (
-        <Navigate to={`/stripe-checkout/`} replace={true}></Navigate>
       )}
 
       {status === 'loading' ? (
@@ -362,23 +417,6 @@ function Checkout() {
                     Choose One
                   </p>
                   <div className="mt-6 space-y-6">
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        id="cash"
-                        name="payments"
-                        onChange={handlePayment}
-                        value="cash"
-                        type="radio"
-                        checked={paymentMethod === 'cash'}
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                      <label
-                        htmlFor="cash"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Cash
-                      </label>
-                    </div>
                     <div className="flex items-center gap-x-3">
                       <input
                         id="card"

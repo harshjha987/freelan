@@ -10,6 +10,29 @@ export function createOrder(order) {
   });
 }
 
+export function createOrders(order) {
+  return new Promise(async (resolve) => {
+    const response = await fetch('/order', {
+      method: 'POST',
+      body: JSON.stringify(order),
+      headers: { 'content-type': 'application/json' },
+    });
+    const data = await response.json();
+    resolve({ data });
+  });
+}
+
+export function createOrdersverify(order) {
+  return new Promise(async (resolve) => {
+    const response = await fetch('/order-verify', {
+      method: 'POST',
+      body: JSON.stringify(order),
+      headers: { 'content-type': 'application/json' },
+    });
+    const data = await response.json();
+    resolve({ data });
+  });
+}
 export function updateOrder(order) {
   return new Promise(async (resolve) => {
     const response = await fetch('/orders/'+order.id, {

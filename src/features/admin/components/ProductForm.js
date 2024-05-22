@@ -115,7 +115,7 @@ function ProductForm() {
             product.image1,
             product.image2,
             // product.image3,
-            // product.thumbnail,
+            product.thumbnail,
           ];
           product.highlights = [
             product.highlight1,
@@ -371,7 +371,7 @@ function ProductForm() {
                 </div>
               </div>
 
-              {/* <div className="sm:col-span-6">
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="thumbnail"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -390,7 +390,7 @@ function ProductForm() {
                     />
                   </div>
                 </div>
-              </div> */}
+              </div>
 
               <div className="sm:col-span-6">
                 <label
