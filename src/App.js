@@ -1,6 +1,7 @@
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import Home from './pages/Home';
+import Main from './pages/Main';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 
@@ -41,11 +42,16 @@ const options = {
 
 const router = createBrowserRouter([
   {
+    path : '/',
+    element : <Main></Main>,
+
+  },
+  {
     path: '/',
     element: (
-      <Protected>
+     
         <Home></Home>
-      </Protected>
+      
     ),
   },
   {

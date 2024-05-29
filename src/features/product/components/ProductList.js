@@ -29,11 +29,11 @@ import { ITEMS_PER_PAGE } from '../../../app/constants';
 import Pagination from '../../common/Pagination';
 import { Grid } from 'react-loader-spinner';
 
-const sortOptions = [
-  { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
-  { name: 'Price: Low to High', sort: 'discountPrice', order: 'asc', current: false },
-  { name: 'Price: High to Low', sort: 'discountPrice', order: 'desc', current: false },
-];
+// const sortOptions = [
+//   { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
+//   { name: 'Price: Low to High', sort: 'discountPrice', order: 'asc', current: false },
+//   { name: 'Price: High to Low', sort: 'discountPrice', order: 'desc', current: false },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -112,12 +112,12 @@ export default function ProductList() {
   return (
     <div className="bg-white">
       <div>
-        <MobileFilter
+        {/* <MobileFilter
           handleFilter={handleFilter}
           mobileFiltersOpen={mobileFiltersOpen}
           setMobileFiltersOpen={setMobileFiltersOpen}
           filters={filters}
-        ></MobileFilter>
+        ></MobileFilter> */}
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
@@ -126,7 +126,7 @@ export default function ProductList() {
             </h1>
 
             <div className="flex items-center">
-              <Menu as="div" className="relative inline-block text-left">
+              {/* <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                     Sort
@@ -169,9 +169,9 @@ export default function ProductList() {
                     </div>
                   </Menu.Items>
                 </Transition>
-              </Menu>
+              </Menu> */}
 
-              <button
+              {/* <button
                 type="button"
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
@@ -185,7 +185,7 @@ export default function ProductList() {
               >
                 <span className="sr-only">Filters</span>
                 <FunnelIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -195,10 +195,10 @@ export default function ProductList() {
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              <DesktopFilter
+              {/* <DesktopFilter
                 handleFilter={handleFilter}
                 filters={filters}
-              ></DesktopFilter>
+              ></DesktopFilter> */}
               {/* Product grid */}
               <div className="lg:col-span-3">
                 <ProductGrid products={products} status={status}></ProductGrid>
@@ -437,10 +437,10 @@ function ProductGrid({ products, status }) {
                   </div>
                   <div>
                     <p className="text-sm block font-medium text-gray-900">
-                      ${product.discountPrice}
+                      ₹{product.discountPrice}
                     </p>
                     <p className="text-sm block line-through font-medium text-gray-400">
-                      ${product.price}
+                      ₹{product.price}
                     </p>
                   </div>
                 </div>

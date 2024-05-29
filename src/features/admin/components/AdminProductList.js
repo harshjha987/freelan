@@ -107,12 +107,12 @@ export default function AdminProductList() {
   return (
     <div className="bg-white">
       <div>
-        <MobileFilter
+        {/* <MobileFilter
           handleFilter={handleFilter}
           mobileFiltersOpen={mobileFiltersOpen}
           setMobileFiltersOpen={setMobileFiltersOpen}
           filters={filters}
-        ></MobileFilter>
+        ></MobileFilter> */}
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
@@ -121,7 +121,7 @@ export default function AdminProductList() {
             </h1>
 
             <div className="flex items-center">
-              <Menu as="div" className="relative inline-block text-left">
+              {/* <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                     Sort
@@ -164,9 +164,9 @@ export default function AdminProductList() {
                     </div>
                   </Menu.Items>
                 </Transition>
-              </Menu>
+              </Menu> */}
 
-              <button
+              {/* <button
                 type="button"
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
@@ -180,7 +180,7 @@ export default function AdminProductList() {
               >
                 <span className="sr-only">Filters</span>
                 <FunnelIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -510,11 +510,11 @@ function ProductGrid({ products }) {
                     </div>
                     <div>
                       <p className="text-sm block font-medium text-gray-900">
-                        $
+                        ₹
                         {product.discountPrice}
                       </p>
                       <p className="text-sm block line-through font-medium text-gray-400">
-                        ${product.price}
+                        ₹{product.price}
                       </p>
                     </div>
                   </div>

@@ -30,7 +30,7 @@ function Checkout() {
   } = useForm();
 
   const [Status, setStatus] = useState(false)
-  const [OrderId, setOrderId] = useState("")
+  const [OrderId, setOrderId] = useState({})
 
   const user = useSelector(selectUserInfo);
   const items = useSelector(selectItems);
@@ -69,7 +69,7 @@ function Checkout() {
 
       const response = await datas({
         // items,
-        amount:totalAmount,
+        amount:totalAmount * 100,
         currency : "INR"})
       console.log(response)
 
@@ -86,12 +86,12 @@ function Checkout() {
               ...response,
 
             }
-            const res = await axios.post('http://localhost:3000/order-verify',
+            const res = await axios.post('/order-verify',
               body)
+              setOrderId(res.data)
             console.log(res)
               if(res.data.msg == "success"){
                 setStatus(true)
-                setOrderId(res.data.orderId)
               }
             
         },
@@ -466,7 +466,7 @@ function Checkout() {
                                 </a>
                               </h3>
                               <p className="ml-4">
-                                ${item.product.discountPrice}
+                                ₹{item.product.discountPrice}
                               </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
@@ -513,7 +513,7 @@ function Checkout() {
               <div className="border-t border-gray-200 px-2 py-6 sm:px-2">
                 <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                   <p>Subtotal</p>
-                  <p>$ {totalAmount}</p>
+                  <p>₹ {totalAmount}</p>
                 </div>
                 <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                   <p>Total Items in Cart</p>
