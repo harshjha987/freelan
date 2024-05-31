@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      roboto: ['Roboto', 'sans'],
+    },
     extend: {
       gridTemplateRows: {
         '[auto,auto,1fr]': 'auto auto 1fr',

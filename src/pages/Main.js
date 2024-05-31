@@ -23,52 +23,69 @@ const features = [
 const Main = () => {
   return (
     <div>
+      {/* Navbar */}
+      <nav className="bg-white  text-stone-700 p-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <img src='/icon.jpg' className='h-14 w-14' alt="Logo" />
+            <Link to="/" className="text-3xl font-semibold font-roboto text-gray-900">Career Craft</Link>
+          </div>
+          <div className="flex space-x-4 text-[18px] font-semibold">
+            <Link to="/about" className="hover:underline">About</Link>
+            <Link to="/contact" className="hover:underline">Contact Us</Link>
+            <Link to="/login" className="hover:underline">Login</Link>
+          </div>
+        </div>
+      </nav>
+
       {/* Header */}
-      <header className="bg-gray-800 text-white p-6">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-bold">Welcome to Career Craft</h1>
-          <p className="text-lg">Your Pathway to a Successful Career in Tech</p>
+      <header className="bg-white ">
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-5xl font-bold font-roboto mb-4">Welcome to Career Craft</h1>
+           
+            <p className="text-2xl mb-6 font-roboto font-semibold">We're revolutionizing education through skill development to lead the New India.</p>
+            <button className='bg-blue-700 rounded-lg '>Get Started</button>
+          </div>
+          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 px-10'>
+            <img 
+              src=" https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
+              alt="Career" 
+              className="lg:w-96 w-full lg:h-96 object-cover  rounded border-none" 
+              style={{ border: 'none' }} 
+            />
+          </div>
         </div>
       </header>
 
       {/* Features */}
-      <section className="bg-gray-100 py-12">
-        <div className="container mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-6">Why Choose Career Craft?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
+      <section className="text-center p-10 bg-white py-20">
+        <h2 className="text-5xl font-bold mb-6 font-roboto">Why Choose Career Craft?</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <div key={index} className="bg-stone-200 p-6 rounded-lg ">
+              <h3 className="text-xl font-bold mb-2 font-sans">{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Login Section */}
-      <section className="bg-white py-12">
-        <div className="container mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">Log In to Explore More</h2>
-          <p className="text-lg mb-6">Access exclusive courses and resources by logging in.</p>
-          <Link to={"/login"} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
-         
-            Log In
-         
-
-          </Link>
-         
-        </div>
+      <section className="bg-gray-800 text-white text-center p-10">
+        <h2 className="text-3xl font-bold mb-4">Ready to Start Your Tech Career?</h2>
+        <p className="text-xl mb-6">Join Career Craft today and take the first step towards your future.</p>
+        <Link to="/login" className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">Sign Up Now</Link>
       </section>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-6">
         <div className="container mx-auto text-center">
           <p>&copy; 2024 Career Craft. All rights reserved.</p>
-          
-         <p className="text-blue-400 hover:underline">Privacy Policy </p> 
-          <p className="text-blue-400 hover:underline ml-2">Terms of Service</p>
-          
+          <div className="flex justify-center space-x-4">
+            <Link to="/privacy-policy" className="text-blue-400 hover:underline">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-blue-400 hover:underline">Terms of Service</Link>
+          </div>
         </div>
       </footer>
     </div>

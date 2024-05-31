@@ -1,4 +1,4 @@
-import { Counter } from './features/counter/Counter';
+
 import './App.css';
 import Home from './pages/Home';
 import Main from './pages/Main';
@@ -32,8 +32,8 @@ import AdminProductFormPage from './pages/AdminProductFormPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
 import { positions, Provider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
-import StripeCheckout from './pages/StripeCheckout';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import About from './pages/About';
 
 const options = {
   timeout: 5000,
@@ -47,10 +47,14 @@ const router = createBrowserRouter([
 
   },
   {
-    path: '/',
+    path: '/home',
     element: (
+      <Protected>
+      <Home></Home>
+
+      </Protected>
      
-        <Home></Home>
+        
       
     ),
   },
@@ -61,6 +65,11 @@ const router = createBrowserRouter([
         <AdminHome></AdminHome>
       </ProtectedAdmin>
     ),
+  },
+  {
+    path : '/about',
+    element : <About></About>
+
   },
   {
     path: '/login',
@@ -150,14 +159,7 @@ const router = createBrowserRouter([
       </Protected>
     ),
   },
-  {
-    path: '/stripe-checkout/',
-    element: (
-      <Protected>
-        <StripeCheckout></StripeCheckout>
-      </Protected>
-    ),
-  },
+  
   {
     path: '/logout',
     element: <Logout></Logout>,

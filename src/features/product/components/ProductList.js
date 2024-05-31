@@ -5,25 +5,23 @@ import {
   fetchCategoriesAsync,
   fetchProductsByFiltersAsync,
   selectAllProducts,
-  selectBrands,
-  selectCategories,
+  // selectBrands,
+  // selectCategories,
   selectProductListStatus,
   selectTotalItems,
 } from '../productSlice';
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
+import { Dialog, Disclosure,  Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
+ 
   StarIcon,
 } from '@heroicons/react/20/solid';
 import { Link } from 'react-router-dom';
 import {
-  ChevronDownIcon,
-  FunnelIcon,
+ 
   MinusIcon,
   PlusIcon,
-  Squares2X2Icon,
+  
 } from '@heroicons/react/20/solid';
 import { ITEMS_PER_PAGE } from '../../../app/constants';
 import Pagination from '../../common/Pagination';
@@ -35,60 +33,60 @@ import { Grid } from 'react-loader-spinner';
 //   { name: 'Price: High to Low', sort: 'discountPrice', order: 'desc', current: false },
 // ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ');
+// }
 
 export default function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const brands = useSelector(selectBrands);
-  const categories = useSelector(selectCategories);
+  // const brands = useSelector(selectBrands);
+  // const categories = useSelector(selectCategories);
   const totalItems = useSelector(selectTotalItems);
   const status = useSelector(selectProductListStatus);
-  const filters = [
-    {
-      id: 'category',
-      name: 'Category',
-      options: categories,
-    },
-    {
-      id: 'brand',
-      name: 'Brands',
-      options: brands,
-    },
-  ];
+  // const filters = [
+  //   {
+  //     id: 'category',
+  //     name: 'Category',
+  //     options: categories,
+  //   },
+  //   {
+  //     id: 'brand',
+  //     name: 'Brands',
+  //     options: brands,
+  //   },
+  // ];
 
-  const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState({});
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  // const [filter, setFilter] = useState({});
+  // const [sort, setSort] = useState({});
+  // const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [page, setPage] = useState(1);
 
-  const handleFilter = (e, section, option) => {
-    console.log(e.target.checked);
-    const newFilter = { ...filter };
-    if (e.target.checked) {
-      if (newFilter[section.id]) {
-        newFilter[section.id].push(option.value);
-      } else {
-        newFilter[section.id] = [option.value];
-      }
-    } else {
-      const index = newFilter[section.id].findIndex(
-        (el) => el === option.value
-      );
-      newFilter[section.id].splice(index, 1);
-    }
-    console.log({ newFilter });
+  // const handleFilter = (e, section, option) => {
+  //   console.log(e.target.checked);
+  //   const newFilter = { ...filter };
+  //   if (e.target.checked) {
+  //     if (newFilter[section.id]) {
+  //       newFilter[section.id].push(option.value);
+  //     } else {
+  //       newFilter[section.id] = [option.value];
+  //     }
+  //   } else {
+  //     const index = newFilter[section.id].findIndex(
+  //       (el) => el === option.value
+  //     );
+  //     newFilter[section.id].splice(index, 1);
+  //   }
+  //   console.log({ newFilter });
 
-    setFilter(newFilter);
-  };
+  //   setFilter(newFilter);
+  // };
 
-  const handleSort = (e, option) => {
-    const sort = { _sort: option.sort, _order: option.order };
-    console.log({ sort });
-    setSort(sort);
-  };
+  // const handleSort = (e, option) => {
+  //   const sort = { _sort: option.sort, _order: option.order };
+  //   console.log({ sort });
+  //   setSort(sort);
+  // };
 
   const handlePage = (page) => {
     console.log({ page });
@@ -97,12 +95,12 @@ export default function ProductList() {
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
-  }, [dispatch, filter, sort, page]);
+    dispatch(fetchProductsByFiltersAsync({  pagination }));
+  }, [dispatch, page]);
 
   useEffect(() => {
     setPage(1);
-  }, [totalItems, sort]);
+  }, [totalItems]);
 
   useEffect(() => {
     dispatch(fetchBrandsAsync());

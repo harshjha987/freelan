@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
-import { RadioGroup } from '@headlessui/react';
+// import { RadioGroup } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchProductByIdAsync,
@@ -9,7 +9,7 @@ import {
 } from '../productSlice';
 import { useParams } from 'react-router-dom';
 import { addToCartAsync, selectItems } from '../../cart/cartSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
+// import { selectLoggedInUser } from '../../auth/authSlice';
 import { useAlert } from 'react-alert';
 import { Grid } from 'react-loader-spinner';
 
@@ -20,8 +20,8 @@ function classNames(...classes) {
 
 
 export default function ProductDetail() {
-  const [selectedColor, setSelectedColor] = useState();
-  const [selectedSize, setSelectedSize] = useState();
+  // const [selectedColor, setSelectedColor] = useState();
+  // const [selectedSize, setSelectedSize] = useState();
   const items = useSelector(selectItems);
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
@@ -37,12 +37,12 @@ export default function ProductDetail() {
         product: product.id,
         quantity: 1,
       };
-      if (selectedColor) {
-        newItem.color = selectedColor;
-      }
-      if (selectedSize) {
-        newItem.size = selectedSize;
-      }
+      // if (selectedColor) {
+      //   newItem.color = selectedColor;
+      // }
+      // if (selectedSize) {
+      //   newItem.size = selectedSize;
+      // }
       dispatch(addToCartAsync({item:newItem, alert}));
     } else {
       alert.error('Item Already added');

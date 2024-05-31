@@ -8,20 +8,20 @@ import {
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectItems } from '../cart/cartSlice';
-import { selectLoggedInUser } from '../auth/authSlice';
+// import { selectLoggedInUser } from '../auth/authSlice';
 import { selectUserInfo } from '../user/userSlice';
 
 
 const navigation = [
-  { name: 'CarrerCraft', link: '/', user: true },
-  { name: 'CarrerCraft', link: '/admin', admin: true },
+  { name: 'Carrer Craft', link: '/home', user: true },
+  { name: 'Carrer Craft', link: '/admin', admin: true },
   { name: 'Orders', link: '/admin/orders', admin: true },
 
 ];
 const userNavigation = [
   { name: 'My Profile', link: '/profile' },
   { name: 'My Orders', link: '/my-orders' },
-  { name: 'Sign out', link: '/logout' },
+  { name: 'Sign out', link: '/' },
 ];
 
 function classNames(...classes) {
@@ -35,23 +35,23 @@ function NavBar({ children }) {
   return (
     <>
       {userInfo &&<div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-white">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-8xl p-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <Link to="/">
+                      <Link to="/home">
                         <img
-                          className="h-8 w-8"
-                          src="/freelan.png"
+                          className="h-14 w-14"
+                          src="/icon.jpg"
                           alt="Your Company"
                         />
                       </Link>
                     </div>
                     <div className="hidden md:block">
-                      <div className="ml-10 flex items-baseline space-x-4">
+                      <div className="ml-2 flex items-baseline space-x-4">
                         {navigation.map((item) =>
                           item[userInfo.role] ? (
                             <Link
@@ -59,9 +59,9 @@ function NavBar({ children }) {
                               to={item.link}
                               className={classNames(
                                 item.current
-                                  ? 'bg-gray-900 text-white'
-                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'rounded-md px-3 py-2 text-2xl font-bold font-serif'
+                                  ? 'bg-white text-stone-700 font-roboto'
+                                  : 'text-stone-700 hover:bg-gray-700 hover:text-white',
+                                'rounded-md  py-2 text-3xl font-bold font-roboto '
                               )}
                               aria-current={item.current ? 'page' : undefined}
                             >
@@ -77,7 +77,7 @@ function NavBar({ children }) {
                       <Link to="/cart">
                         <button
                           type="button"
-                          className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                          className="rounded-full bg-white p-1 text-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                         >
                           <span className="sr-only">View notifications</span>
                           <ShoppingCartIcon
@@ -96,10 +96,10 @@ function NavBar({ children }) {
                       <Menu as="div" className="relative ml-3">
                         <div>
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                            <span className="sr-only">Open user menu</span>
+                            <span className="sr-only">&#9776</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={userInfo.imageUrl}
+                              src= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQNvWDvQb_rCtRL-p_w329CtzHmfzfWP0FIw&s'
                               alt=""
                             />
                           </Menu.Button>
@@ -227,11 +227,21 @@ function NavBar({ children }) {
         </Disclosure>
 
         <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-5xl font-bold mb-4">Welcome to Career Craft</h1>
-        <p className="text-xl mb-6">Your Pathway to a Successful Career in Tech</p>
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-5xl font-bold mb-4">Welcome to Career Craft</h1>
+            <p className="text-xl mb-6">Your Pathway to a Successful Career in Tech</p>
           </div>
-        </header> 
+          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 px-10'>
+            <img 
+              src=" https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
+              alt="Career" 
+              className="lg:w-96 w-full lg:h-96 object-cover  rounded border-none" 
+              style={{ border: 'none' }} 
+            />
+          </div>
+        </div>
+      </header>
         <section className="text-center p-10">
         <h2 className="text-3xl font-bold mb-6">Why Choose Career Craft?</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
