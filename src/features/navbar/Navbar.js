@@ -164,7 +164,7 @@ function NavBar({ children }) {
                       className={classNames(
                         item.current
                           ? 'bg-gray-900 text-white'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          : 'text-gray-800 hover:bg-gray-700 hover:text-white',
                         'block rounded-md px-3 py-2 text-base font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -187,14 +187,14 @@ function NavBar({ children }) {
                         {/* this should come from userInfo */}
                         {userInfo.name}
                       </div>
-                      <div className="text-sm font-medium leading-none text-gray-400">
+                      <div className="text-sm font-medium leading-none text-gray-800">
                         {userInfo.email}
                       </div>
                     </div>
                     <Link to="/cart">
                       <button
                         type="button"
-                        className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <ShoppingCartIcon
                           className="h-6 w-6"
@@ -226,22 +226,25 @@ function NavBar({ children }) {
           )}
         </Disclosure>
 
-        <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-5xl font-bold mb-4">Welcome to Career Craft</h1>
-            <p className="text-xl mb-6">Your Pathway to a Successful Career in Tech</p>
+        <header className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+          <div className="text-center lg:text-left mb-6 lg:mb-0">
+            <h1 className="text-5xl font-bold font-roboto mb-4">Welcome to Career Craft</h1>
+            <p className="text-2xl mb-6 font-roboto font-semibold">We're revolutionizing education through skill development to lead the New India.</p>
+           
+           
           </div>
-          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 px-10'>
+          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 px-10'>
             <img 
-              src=" https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
+              src="https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
               alt="Career" 
-              className="lg:w-96 w-full lg:h-96 object-cover  rounded border-none" 
+              className="lg:w-96 w-full lg:h-96 object-cover rounded border-none" 
               style={{ border: 'none' }} 
             />
           </div>
         </div>
       </header>
+
         <section className="text-center p-10">
         <h2 className="text-3xl font-bold mb-6">Why Choose Career Craft?</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -24,7 +24,7 @@ const Main = () => {
   return (
     <div>
       {/* Navbar */}
-      <nav className="bg-white  text-stone-700 p-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
+      <nav className="bg-white text-stone-700 p-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <img src='/icon.jpg' className='h-14 w-14' alt="Logo" />
@@ -39,19 +39,22 @@ const Main = () => {
       </nav>
 
       {/* Header */}
-      <header className="bg-white ">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div>
+      <header className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+          <div className="text-center lg:text-left mb-6 lg:mb-0">
             <h1 className="text-5xl font-bold font-roboto mb-4">Welcome to Career Craft</h1>
-           
             <p className="text-2xl mb-6 font-roboto font-semibold">We're revolutionizing education through skill development to lead the New India.</p>
-            <button className='bg-blue-700 rounded-lg '>Get Started</button>
+            <Link to= "/login">
+            <button className='bg-blue-700 text-white px-6 py-3 rounded-lg'>Get Started</button>
+
+            </Link>
+           
           </div>
-          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 px-10'>
+          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 px-10'>
             <img 
-              src=" https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
+              src="https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
               alt="Career" 
-              className="lg:w-96 w-full lg:h-96 object-cover  rounded border-none" 
+              className="lg:w-96 w-full lg:h-96 object-cover rounded border-none" 
               style={{ border: 'none' }} 
             />
           </div>
@@ -63,7 +66,7 @@ const Main = () => {
         <h2 className="text-5xl font-bold mb-6 font-roboto">Why Choose Career Craft?</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <div key={index} className="bg-stone-200 p-6 rounded-lg ">
+            <div key={index} className="bg-stone-200 p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-2 font-sans">{feature.title}</h3>
               <p>{feature.description}</p>
             </div>
