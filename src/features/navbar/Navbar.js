@@ -1,57 +1,80 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import {
-  Bars3Icon,
-  ShoppingCartIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectItems } from '../cart/cartSlice';
-// import { selectLoggedInUser } from '../auth/authSlice';
 import { selectUserInfo } from '../user/userSlice';
+import Cookies from 'js-cookie';
 
 
 const navigation = [
-  { name: 'Carrer Craft', link: '/home', user: true },
-  { name: 'Carrer Craft', link: '/admin', admin: true },
+  { name: 'Career Craft', link: '/home', user: true },
+  { name: 'Career Craft', link: '/admin', admin: true },
   { name: 'Orders', link: '/admin/orders', admin: true },
-
 ];
 const userNavigation = [
   { name: 'My Profile', link: '/profile' },
   { name: 'My Orders', link: '/my-orders' },
-  { name: 'Sign out', link: '/' },
+  { name: 'Sign out', link: '/logout' },
 ];
+const features = [
+  {
+    title: "Expert Instructors",
+    description: "Our expert instructors, with extensive industry experience, deliver clear, concise explanations of complex topics using interactive methods to foster engagement. Committed to staying current with industry trends, they provide personalized guidance and constructive feedback, creating a supportive learning environment for continuous improvement and career advancement."
+  },
+  {
+    title: "Flexible Learning",
+    description: "We offer flexible learning options, from self-paced study to structured environments, catering to various preferences and schedules. Our approach includes online courses for anytime, anywhere access, blended learning, and intensive workshops, ensuring hands-on, real-world experience for learners to thrive in a competitive global landscape."
+  },
+  {
+    title: "Comprehensive Curriculum",
+    description: "Our comprehensive curriculum, crafted by experts in collaboration with industry professionals, balances theory and practical application, emphasizing hands-on learning, case studies, and real-world projects. Continuously updated to reflect current trends and best practices, it equips learners with valuable insights and practical knowledge for immediate career application, ensuring success in today’s competitive landscape."
+  },
+  {
+    title: "Career Support",
+    description: "We extend learning beyond course completion to career success through comprehensive support, including resume building, interview preparation, and job placement assistance. By helping learners set career goals and connect with employers, we empower them to confidently navigate the job market and thrive in their careers."
+  }
+];
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 function NavBar({ children }) {
+  
+
+  useEffect(() => {
+    Cookies.remove("jwt", {
+      path: "/login"
+    });
+  }, []);
+
   const items = useSelector(selectItems);
   const userInfo = useSelector(selectUserInfo);
+  
 
   return (
     <>
-      {userInfo &&<div className="min-h-full">
-        <Disclosure as="nav" className="bg-white">
+      {userInfo && <div className="min-h-full">
+        <Disclosure as="nav" className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 shadow-lg">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-8xl p-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-8xl p-2 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <Link to="/home">
                         <img
-                          className="h-14 w-14"
-                          src="/icon.jpg"
+                          className="h-10 w-24 px-2 md:h-8 md:w-14"
+                          src="/newLogo.png"
                           alt="Your Company"
                         />
                       </Link>
                     </div>
                     <div className="hidden md:block">
-                      <div className="ml-2 flex items-baseline space-x-4">
+                      <div className="flex items-baseline space-x-4">
                         {navigation.map((item) =>
                           item[userInfo.role] ? (
                             <Link
@@ -59,9 +82,9 @@ function NavBar({ children }) {
                               to={item.link}
                               className={classNames(
                                 item.current
-                                  ? 'bg-white text-stone-700 font-roboto'
-                                  : 'text-stone-700 hover:bg-gray-700 hover:text-white',
-                                'rounded-md  py-2 text-3xl font-bold font-roboto '
+                                  ? 'bg-white text-stone-700 font-mono font-semibold'
+                                  : 'text-white hover:bg-gray-700 hover:text-white',
+                                'rounded-md  text-3xl font-bold font-mono'
                               )}
                               aria-current={item.current ? 'page' : undefined}
                             >
@@ -98,8 +121,8 @@ function NavBar({ children }) {
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">&#9776</span>
                             <img
-                              className="h-8 w-8 rounded-full"
-                              src= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQNvWDvQb_rCtRL-p_w329CtzHmfzfWP0FIw&s'
+                              className="h-10 w-10 rounded-full"
+                              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQNvWDvQb_rCtRL-p_w329CtzHmfzfWP0FIw&s'
                               alt=""
                             />
                           </Menu.Button>
@@ -136,7 +159,7 @@ function NavBar({ children }) {
                   </div>
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-white hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -155,30 +178,31 @@ function NavBar({ children }) {
               </div>
 
               <Disclosure.Panel className="md:hidden">
-                <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                  {navigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? 'bg-gray-900 text-white'
-                          : 'text-gray-800 hover:bg-gray-700 hover:text-white',
-                        'block rounded-md px-3 py-2 text-base font-medium'
-                      )}
-                      aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
+                <div className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800">
+                  {navigation.map((item) =>
+                    item[userInfo.role] ? (
+                      <Link
+                        key={item.name}
+                        to={item.link}
+                        className={classNames(
+                          item.current
+                            ? 'bg-gray-900 text-white'
+                            : 'text-gray-800 hover:bg-gray-700 hover:text-white',
+                          'block rounded-md px-3 py-2 text-base font-medium'
+                        )}
+                        aria-current={item.current ? 'page' : undefined}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : null
+                  )}
                 </div>
-                <div className="border-t border-gray-700 pb-3 pt-4">
+                <div className="border-t border-white pb-2 pt-0">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
                       <img
-                        className="h-10 w-10 rounded-full"
-                        src={userInfo.imageUrl}
+                        className="h-6 w-6 rounded-full"
+                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQNvWDvQb_rCtRL-p_w329CtzHmfzfWP0FIw&s'
                         alt=""
                       />
                     </div>
@@ -187,14 +211,14 @@ function NavBar({ children }) {
                         {/* this should come from userInfo */}
                         {userInfo.name}
                       </div>
-                      <div className="text-sm font-medium leading-none text-gray-800">
+                      <div className="text-sm font-medium leading-none text-white">
                         {userInfo.email}
                       </div>
                     </div>
                     <Link to="/cart">
                       <button
                         type="button"
-                        className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="ml-3 flex-shrink-0 rounded-full bg-white p-1 text-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <ShoppingCartIcon
                           className="h-6 w-6"
@@ -210,14 +234,14 @@ function NavBar({ children }) {
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                      <Link
+                        to={item.link}
+                        className={classNames(
+                          'bg-gray-100 block px-4 py-2 text-sm text-gray-700'
+                        )}
                       >
                         {item.name}
-                      </Disclosure.Button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -226,53 +250,51 @@ function NavBar({ children }) {
           )}
         </Disclosure>
 
-        <header className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
-          <div className="text-center lg:text-left mb-6 lg:mb-0">
-            <h1 className="text-5xl font-bold font-roboto mb-4">Welcome to Career Craft</h1>
-            <p className="text-2xl mb-6 font-roboto font-semibold">We're revolutionizing education through skill development to lead the New India.</p>
-           
-           
-          </div>
-          <div className='lg:w-1/2 w-full lg:pr-10 lg:py-6 px-10'>
-            <img 
-              src="https://cdn.pixabay.com/photo/2016/11/21/22/10/white-male-1847742_640.jpg" 
-              alt="Career" 
-              className="lg:w-96 w-full lg:h-96 object-cover rounded border-none" 
-              style={{ border: 'none' }} 
-            />
-          </div>
-        </div>
-      </header>
+        <header className="bg-slate-50 text-black">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+            <div className="text-center lg:text-left mb-6 lg:mb-0">
+              <h1 className="text-5xl font-bold font-mono mb-4">Welcome to Career <span className='text-yellow-600'>Craft</span></h1>
+              <p className="md:text-xl  font-serif  text-slate-700">We're revolutionizing <span className='font-bold text-slate-500'>education</span>  through skill development to lead the New India.</p>
+              <p className="md:text-xl mb-6 font-serif font-semibold  text-blue-700">Crafting succesful careers.</p>
+              <Link to= "/productList">
+                
+              <button  className='btn-glow-bounce bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800
+               transition duration-300 animate-bounce motion-safe:animate-bounce'>Check Our Products <span className='font-semibold'>&#x27F6;</span></button>
+               </Link>
 
-        <section className="text-center p-10">
-        <h2 className="text-3xl font-bold mb-6">Why Choose Career Craft?</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Expert Instructors</h3>
-            <p>Learn from industry leaders and experienced professionals.</p>
+
+              
+            </div>
+            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-10 px-14  rounded-lg ">
+              <img 
+                src="/carrercraftlogo.png" 
+                alt="Career" 
+                className="lg:w-96 w-auto lg:h-48 object-cover rounded border-0 mx-auto"  
+                style={{ border: 'none' }} 
+              />
+            </div>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Flexible Learning</h3>
-            <p>Access our courses anytime, anywhere, and learn at your own pace.</p>
+        </header>
+
+        <section className="text-center p-10 bg-gray-800 py-20 text-white">
+          <h2 className="text-5xl font-bold mb-6 font-roboto">Why Choose Career <span className='text-yellow-300'> Craft</span> ?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <div key={index} className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 p-6 rounded-lg shadow-md transform transition duration-300 hover:scale-105">
+                <h3 className="text-2xl font-bold mb-4 text-blue-300">{feature.title}</h3>
+                <p className="text-lg md:text-base leading-relaxed text-left md:text-justify text-gray-300">{feature.description}</p>
+              </div>
+            ))}
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Comprehensive Curriculum</h3>
-            <p>Our courses cover everything from the basics to advanced topics.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">Career Support</h3>
-            <p>Get personalized career advice and job placement assistance.</p>
-          </div>
-        </div>
-      </section>
+        </section>
+
+        
 
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             {children}
           </div>
         </main>
-       
       </div>}
     </>
   );

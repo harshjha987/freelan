@@ -3,8 +3,7 @@ import {
   clearSelectedProduct,
   createProductAsync,
   fetchProductByIdAsync,
-  selectBrands,
-  selectCategories,
+ 
   selectProductById,
   updateProductAsync,
 } from '../../product/productSlice';
@@ -20,47 +19,47 @@ function ProductForm() {
     handleSubmit,
     setValue,
     reset,
-    formState: { errors },
+    
   } = useForm();
-  const brands = useSelector(selectBrands);
-  const categories = useSelector(selectCategories);
+  // const brands = useSelector(selectBrands);
+  // const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
   const params = useParams();
   const selectedProduct = useSelector(selectProductById);
   const [openModal, setOpenModal] = useState(null);
   const alert = useAlert();
 
-  const colors = [
-    {
-      name: 'White',
-      class: 'bg-white',
-      selectedClass: 'ring-gray-400',
-      id: 'white',
-    },
-    {
-      name: 'Gray',
-      class: 'bg-gray-200',
-      selectedClass: 'ring-gray-400',
-      id: 'gray',
-    },
-    {
-      name: 'Black',
-      class: 'bg-gray-900',
-      selectedClass: 'ring-gray-900',
-      id: 'black',
-    },
-  ];
+  // const colors = [
+  //   {
+  //     name: 'White',
+  //     class: 'bg-white',
+  //     selectedClass: 'ring-gray-400',
+  //     id: 'white',
+  //   },
+  //   {
+  //     name: 'Gray',
+  //     class: 'bg-gray-200',
+  //     selectedClass: 'ring-gray-400',
+  //     id: 'gray',
+  //   },
+  //   {
+  //     name: 'Black',
+  //     class: 'bg-gray-900',
+  //     selectedClass: 'ring-gray-900',
+  //     id: 'black',
+  //   },
+  // ];
 
-  const sizes = [
-    { name: 'XXS', inStock: true, id: 'xxs' },
-    { name: 'XS', inStock: true, id: 'xs' },
-    { name: 'S', inStock: true, id: 's' },
-    { name: 'M', inStock: true, id: 'm' },
-    { name: 'L', inStock: true, id: 'l' },
-    { name: 'XL', inStock: true, id: 'xl' },
-    { name: '2XL', inStock: true, id: '2xl' },
-    { name: '3XL', inStock: true, id: '3xl' },
-  ];
+  // const sizes = [
+  //   { name: 'XXS', inStock: true, id: 'xxs' },
+  //   { name: 'XS', inStock: true, id: 'xs' },
+  //   { name: 'S', inStock: true, id: 's' },
+  //   { name: 'M', inStock: true, id: 'm' },
+  //   { name: 'L', inStock: true, id: 'l' },
+  //   { name: 'XL', inStock: true, id: 'xl' },
+  //   { name: '2XL', inStock: true, id: '2xl' },
+  //   { name: '3XL', inStock: true, id: '3xl' },
+  // ];
 
   useEffect(() => {
     if (params.id) {
@@ -76,7 +75,7 @@ function ProductForm() {
       setValue('description', selectedProduct.description);
       setValue('price', selectedProduct.price);
       setValue('discountPercentage', selectedProduct.discountPercentage);
-      // setValue('thumbnail', selectedProduct.thumbnail);
+      setValue('thumbnail', selectedProduct.thumbnail);
       // setValue('stock', selectedProduct.stock);
       setValue('image1', selectedProduct.images[0]);
       setValue('image2', selectedProduct.images[1]);

@@ -7,7 +7,7 @@ import {
   resetPasswordRequest,
   resetPassword,
 } from './authAPI';
-import { updateUser } from '../user/userAPI';
+
 
 const initialState = {
   loggedInUserToken: null, // this should only contain user identity => 'id'/'role'
@@ -23,6 +23,7 @@ export const createUserAsync = createAsyncThunk(
   async (userData) => {
     const response = await createUser(userData);
     // The value we return becomes the `fulfilled` action payload
+    console.log(response)
     return response.data;
   }
 );

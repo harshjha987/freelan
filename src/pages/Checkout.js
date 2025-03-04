@@ -36,6 +36,7 @@ function Checkout() {
   const items = useSelector(selectItems);
   const status = useSelector(selectStatus);
   const currentOrder = useSelector(selectCurrentOrder);
+  console.log(OrderId)
 
   const totalAmount = items.reduce(
     (amount, item) => item.product.discountPrice * item.quantity + amount,
@@ -74,10 +75,10 @@ function Checkout() {
       console.log(response)
 
       var options = {
-        "key": "rzp_test_Zs3ZVOYDvRkiJq", // Enter the Key ID generated from the Dashboard
+        "key": "rzp_live_WU7iiC1heuUkTB", // Enter the Key ID generated from the Dashboard
         totalAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
-        "name": "Acme Corp", //your business name
+        "name": "Career Craft", //your business name
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
         "order_id": response.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -90,15 +91,15 @@ function Checkout() {
               body)
               setOrderId(res.data)
             console.log(res)
-              if(res.data.msg == "success"){
+              if(res.data.msg === "success"){
                 setStatus(true)
               }
             
         },
         "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-            "name": "Gaurav Kumar", //your customer's name
-            "email": "gaurav.kumar@example.com", 
-            "contact": "9000090000"  //Provide the customer's phone number for better conversion rates 
+            "name": "user.name", //your customer's name
+            "email": "user.email", 
+            "contact": "user.phone"  //Provide the customer's phone number for better conversion rates 
         },
         "notes": {
             "address": "Razorpay Corporate Office"
@@ -533,7 +534,7 @@ function Checkout() {
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                   <p>
                     or
-                    <Link to="/">
+                    <Link to="/home">
                       <button
                         type="button"
                         className="font-medium text-indigo-600 hover:text-indigo-500"

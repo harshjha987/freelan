@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
-import { RadioGroup } from '@headlessui/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchProductByIdAsync,
@@ -9,7 +9,7 @@ import {
 } from '../../product/productSlice';
 import { useParams } from 'react-router-dom';
 import { addToCartAsync, selectItems } from '../../cart/cartSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
+
 import { useAlert } from 'react-alert';
 import { Grid } from 'react-loader-spinner';
 
@@ -20,8 +20,6 @@ function classNames(...classes) {
 
 
 export default function AdminProductDetail() {
-  const [selectedColor, setSelectedColor] = useState();
-  const [selectedSize, setSelectedSize] = useState();
   const items = useSelector(selectItems);
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
@@ -37,12 +35,12 @@ export default function AdminProductDetail() {
         product: product.id,
         quantity: 1,
       };
-      if (selectedColor) {
-        newItem.color = selectedColor;
-      }
-      if (selectedSize) {
-        newItem.size = selectedSize;
-      }
+      // if (selectedColor) {
+      //   newItem.color = selectedColor;
+      // }
+      // if (selectedSize) {
+      //   newItem.size = selectedSize;
+      // }
       dispatch(addToCartAsync(newItem));
       alert.success('Item added to Cart');
     } else {
@@ -358,7 +356,7 @@ export default function AdminProductDetail() {
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
                 <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{product.description}</p>
+                  <p className="text-sm text-gray-600">{product.highlights}</p>
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ import Main from './pages/Main';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 
-import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout';
 import ProductDetailPage from './pages/ProductDetailPage';
@@ -34,6 +34,10 @@ import { positions, Provider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import About from './pages/About';
+import ContactUs from "./pages/ContactUs";
+import ProductList from './features/product/components/ProductList';
+import FaqSection from "./pages/FaqSection"
+import MentorsPage from './pages/MentorsPage';
 
 const options = {
   timeout: 5000,
@@ -47,10 +51,27 @@ const router = createBrowserRouter([
 
   },
   {
+    path : '/faqSection',
+    element : <FaqSection></FaqSection>,
+
+  },
+  {
     path: '/home',
     element: (
       <Protected>
       <Home></Home>
+
+      </Protected>
+     
+        
+      
+    ),
+  },
+  {
+    path: '/productList',
+    element: (
+      <Protected>
+      <ProductList></ProductList>
 
       </Protected>
      
@@ -72,12 +93,21 @@ const router = createBrowserRouter([
 
   },
   {
+    path : '/mentors',
+    element : <MentorsPage/>
+
+  },
+  {
     path: '/login',
     element: <LoginPage></LoginPage>,
   },
   {
     path: '/signup',
     element: <SignupPage></SignupPage>,
+  },
+  {
+    path: '/contact',
+    element : <ContactUs></ContactUs>
   },
   {
     path: '/cart',

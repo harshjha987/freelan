@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/20/solid';
 // import { RadioGroup } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -67,6 +68,7 @@ export default function ProductDetail() {
           visible={true}
         />
       ) : null}
+      
       {product && (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
@@ -91,6 +93,7 @@ export default function ProductDetail() {
                       >
                         <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                       </svg>
+                      
                     </div>
                   </li>
                 ))}
@@ -107,7 +110,7 @@ export default function ProductDetail() {
           </nav>
 
           {/* Image gallery */}
-          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-4">
             <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
               <img
                 src={product.images[0]}
@@ -115,15 +118,15 @@ export default function ProductDetail() {
                 className="h-full w-full object-cover object-center"
               />
             </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+            <div className=" lg:grid lg:grid-cols-1 lg:gap-y-8">
+              <div className="aspect-h-3 aspect-w-4 hidden overflow-hidden rounded-lg">
                 <img
                   src={product.images[1]}
                   alt={product.title}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+              <div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg">
                 <img
                   src={product.images[2]}
                   alt={product.title}
@@ -159,7 +162,7 @@ export default function ProductDetail() {
               </p>
 
               {/* Reviews */}
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <h3 className="sr-only">Reviews</h3>
                 <div className="flex items-center">
                   <div className="flex items-center">
@@ -178,7 +181,7 @@ export default function ProductDetail() {
                   </div>
                   <p className="sr-only">{product.rating} out of 5 stars</p>
                 </div>
-              </div>
+              </div> */}
 
               <form className="mt-10">
                 {/* Colors */}
@@ -309,7 +312,7 @@ export default function ProductDetail() {
                     </RadioGroup>
                   </div> */}
                 
-
+  
                 <button
                   onClick={handleCart}
                   type="submit"
@@ -317,6 +320,11 @@ export default function ProductDetail() {
                 >
                   Add to Cart
                 </button>
+                <Link to= '/productList'>
+          <div className='mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+          Go back
+        </div>
+        </Link>
               </form>
             </div>
 
@@ -353,11 +361,11 @@ export default function ProductDetail() {
                 </div>
               )} */}
 
-              <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+              <div className="mt-8">
+                <h2 className="text-lg font-semibold text-gray-900">Details*</h2>
 
-                <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{product.description}</p>
+                <div className="mt-2 space-y-6">
+                  <p className="text-sm text-gray-600">{product.highlights}</p>
                 </div>
               </div>
             </div>

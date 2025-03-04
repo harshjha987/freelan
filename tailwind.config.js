@@ -6,6 +6,12 @@ module.exports = {
   theme: {
     fontFamily: {
       roboto: ['Roboto', 'sans'],
+      'sans': ['Helvetica', 'Arial', 'sans-serif'],
+
+  // Comma-delimited format:
+  'sans': 'Helvetica, Arial, sans-serif',
+      'serif': ['ui-serif', 'Georgia'],
+      'mono': ['ui-monospace', 'SFMono-Regular'],
     },
     extend: {
       gridTemplateRows: {
